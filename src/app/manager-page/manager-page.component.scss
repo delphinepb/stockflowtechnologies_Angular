@@ -45,3 +45,21 @@ ul {
     background-color: lightgray;
     flex-wrap: wrap;
   }
+
+  .btnValider {
+    border: none;
+    border-radius: 5px;
+    background-color: #00B347;
+    color: white;
+    font-size: 20px;
+    width: 175px;
+    height: 50px;
+  }
+
+  .btnValider:hover {
+    border: none;
+    border-radius: 5px;
+    color: #00B347;
+    background-color: rgb(157, 244, 174);
+    font-size: 20px;
+  }

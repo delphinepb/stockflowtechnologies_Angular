@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 
 import { ManagerPageComponent } from './manager-page/manager-page.component';
 import { LoginComponent } from './login/login.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalComponent } from './modal/modal.component';
 
 
@@ -24,7 +23,6 @@ import { ModalComponent } from './modal/modal.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule
-    BrowserAnimationsModule
   ],
   providers: [ProduitMockService],
   bootstrap: [AppComponent]

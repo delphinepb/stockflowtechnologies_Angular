@@ -11,6 +11,6 @@ export class AuthService {
 
   authenticate(email: string, password: string) {
     const credentials = { email, password };
-    return this.http.post(`${this.baseUrl}/api/login/authenticate`, credentials);
+    return this.http.post(`${this.baseUrl}/api/login/authenticate/`, credentials);
   }
 }

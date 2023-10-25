@@ -35,5 +35,10 @@ public class LoginController {
       return new ResponseEntity<>("Échec de l'authentification. Veuillez vérifier vos informations d'identification.", HttpStatus.UNAUTHORIZED);
     }
   }
+
+  @GetMapping("/test")
+  public void test(){
+    System.out.println("test ");
+  }
 }
 

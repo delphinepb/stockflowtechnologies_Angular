@@ -24,6 +24,24 @@ ul {
   svg {
     font-size:20px;
     margin-right: 10px;
-    fill: white;
+    
   }
   
+  .produit {
+    font-size: 20px;
+    width: 330px;
+    padding: 7px;
+    margin: 10px;
+    border: black solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .conteneurProduits {
+    display: flex;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: lightgray;
+    flex-wrap: wrap;
+  }

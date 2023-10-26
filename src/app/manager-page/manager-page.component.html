@@ -11,6 +11,7 @@
           <label class="input-group-text" for="inputGroupSelect01">Options</label>
         </div>
         <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="categorie" (change)="filtrerParCategorie()">
+            <option value="tous" selected>Tous</option>
             <option *ngFor="let categorie of categories" [value]="categorie.id">{{categorie.nom}}</option>
           </select>
       </div>

@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { ProduitMockService } from '../produit/produit.mock.service';
 import { produit } from '../shared/produit';
 import { Router } from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogAjouterProduitComponent } from '../dialog-ajouter-produit/dialog-ajouter-produit.component';
 import {getProduits} from '../GetProduits';
 
 @Component({
@@ -11,17 +13,21 @@ import {getProduits} from '../GetProduits';
 })
 export class ManagerPageComponent implements OnInit {
   compteur: number = 0;
-  produits: produit[];
+  produits: produit[];  
+
+  constructor(
+    private el: ElementRef, 
+    private produitService: ProduitMockService, 
+    private router: Router,
+    public dialog : MatDialog,
+     private getProduit : getProduits
+    ) { 
+      
   selectedproduits: any;
   element:any;
   elements: any[] = []
-
-
+  this.produits = [];
       
-
-
-  constructor(private el: ElementRef, private produitService: ProduitMockService, private router: Router,private getProduit : getProduits) { 
-    this.produits = [];
   }
 
   ngOnInit(){
@@ -57,12 +63,15 @@ export class ManagerPageComponent implements OnInit {
         
     }
    
+openDialog(): void {
+  const dialogRef = this.dialog.open(DialogAjouterProduitComponent, {
+    width: '500px', height : '350px'
+  });
 
-  
-
-
-
-  
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+  });
+}
 
   enleverProduit(){
     if (this.compteur > 0) {
@@ -72,9 +81,6 @@ export class ManagerPageComponent implements OnInit {
 
   ajouterProduit(){
     this.compteur++;
-  }
-
-  newProduct(){
   }
 
   supprimerProduit() {
@@ -87,5 +93,6 @@ export class ManagerPageComponent implements OnInit {
   sedeconnecter(){
     this.router.navigate(['/']);
   }
-
+  
 }
+

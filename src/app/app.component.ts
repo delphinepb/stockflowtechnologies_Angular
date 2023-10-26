@@ -9,39 +9,7 @@ import { AuthService } from './authentification';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent{
-  email: string = '';
-  password: string = '';
 
-  constructor(private authService: AuthService) { }
-
-
-
-  login(form: NgForm) {
-
-    console.log("dans login");
-
-    if (form.valid) {
-      const credentials = {
-        email: this.email,
-        password: this.password
-      }
-
-      this.authService.authenticate(this.email, this.password)
-        .subscribe(
-
-          (response) => {
-            // Gérer la réponse du backend (authentification réussie)
-            console.log('Authentification réussie');
-          },
-          (error) => {
-            // Gérer les erreurs (échec de l'authentification)
-            console.error('Échec de l\'authentification');
-          }
-        );
-    }
-      console.log("email " + this.email + " password " + this.password);
-
-    }
 
 
 

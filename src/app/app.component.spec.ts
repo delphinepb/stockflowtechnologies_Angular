@@ -17,7 +17,8 @@ describe('AppComponent', () => {
   it(`should have as title 'stockflowtechnologies'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-     });
+    expect(app.title).toEqual('stockflowtechnologies');
+  });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);

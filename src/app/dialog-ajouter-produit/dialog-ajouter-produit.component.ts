@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../authentification';
-import { Router } from '@angular/router';
 import {ManagerPageComponent} from '../manager-page/manager-page.component'
 
 @Component({
@@ -29,7 +28,6 @@ export class DialogAjouterProduitComponent {
         console.log('Produit ajouté:', response);
         this.ManagerPageComponent.getP()
         location.reload();
-
         this.dialogRef.close(response);
       },
       (error: any) => {

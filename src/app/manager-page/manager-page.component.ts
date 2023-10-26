@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { ProduitMockService } from '../produit/produit.mock.service';
 import { produit } from '../shared/produit';
 import { Router } from '@angular/router';
@@ -12,12 +12,15 @@ import {updateProduit} from "../updateProduit";
   templateUrl: './manager-page.component.html',
   styleUrls: ['./manager-page.component.scss']
 })
-export class ManagerPageComponent implements OnInit {
+export class ManagerPageComponent {
   compteur: number = 0;
   produits: produit[];
   selectedproduits: any;
   element:any;
   elements: any[] = []
+  categories: any[] = []
+  categorie: number = 1
+
 
   constructor(
     private el: ElementRef,
@@ -25,10 +28,34 @@ export class ManagerPageComponent implements OnInit {
     private router: Router,
     public dialog : MatDialog,
     private getProduit : getProduits,
-    private updateProduit:updateProduit
+    private updateProduit:updateProduit,
   ) {
     this.produits=[]
+    this.getCategories();
+    this.getP();
+  }
 
+  getCategories(){
+    this.categories = [];
+
+      this.getProduit.categorie()
+          .subscribe(
+
+              (response) => {
+                  const objetEnJSON = JSON.stringify(response);
+                  const values = Object.values(response);
+
+                  for (const element of values) {
+                      this.categorie=element;
+                      this.categories.push(this.categorie);
+                  }
+
+              },
+              (error) => {
+                  console.log('erreur ');
+
+              }
+          );
   }
 
   getP(){
@@ -40,16 +67,13 @@ export class ManagerPageComponent implements OnInit {
           .subscribe(
 
               (response) => {
-                  // Gérer la réponse du backend (authentification réussie)
                   const objetEnJSON = JSON.stringify(response);
                   const values = Object.values(response);
 
                   for (const element of values) {
-                      // `element` contient un élément de la liste
                       console.log('Élément:', element);
                       this.element=element;
                       this.elements.push(this.element);
-                      // Vous pouvez maintenant faire ce que vous voulez avec chaque élément
                   }
 
                   console.log(this.element)
@@ -57,19 +81,13 @@ export class ManagerPageComponent implements OnInit {
               },
               (error) => {
                   console.log('erreur ');
-                  // Gérer les erreurs (échec de l'authentification)
 
               }
           );
 
   }
 
-  ngOnInit(){
-
-    this.getP();
-
-
-  }
+  
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAjouterProduitComponent, {
@@ -78,14 +96,12 @@ export class ManagerPageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.router.navigateByUrl(this.router.url)
+
+
     });
   }
 
-  enleverProduit(){
-    if (this.compteur > 0) {
-      this.compteur--;
-    }
-  }
 
   update(plus_ou_moins:any,id:any,quantite:any){
     if(plus_ou_moins=="plus"){
@@ -119,15 +135,11 @@ export class ManagerPageComponent implements OnInit {
   }
 
   supprimerProduit(id:any) {
-    /*const produitElement = this.el.nativeElement.querySelector('.produit');
-    if (produitElement) {
-      produitElement.remove();
-    }*/
+
 
       this.updateProduit.delete(id)
           .subscribe(
               (response) => {
-                  // Gérer la réponse du backend (authentification réussie)
                   console.log('Delete Réussi ! ');
                   this.router.navigateByUrl(this.router.url)
                   this.getP()

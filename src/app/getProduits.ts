@@ -12,4 +12,9 @@ export class getProduits {
   authenticate() {
     return this.http.get(`${this.baseUrl}/Produits`);
   }
+
+  categorie(){
+    return this.http.get(`${this.baseUrl}/Categories`)
+  }
+
 }

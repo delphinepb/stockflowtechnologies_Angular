@@ -4,6 +4,7 @@ import { produit } from '../shared/produit';
 import { Router } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogAjouterProduitComponent } from '../dialog-ajouter-produit/dialog-ajouter-produit.component';
+import {getProduits} from '../GetProduits';
 
 @Component({
   selector: 'app-manager-page',
@@ -12,22 +13,56 @@ import { DialogAjouterProduitComponent } from '../dialog-ajouter-produit/dialog-
 })
 export class ManagerPageComponent implements OnInit {
   compteur: number = 0;
-  produits: produit[];
-  
+  produits: produit[];  
 
   constructor(
     private el: ElementRef, 
     private produitService: ProduitMockService, 
     private router: Router,
-    public dialog : MatDialog
+    public dialog : MatDialog,
+     private getProduit : getProduits
     ) { 
-    this.produits = [];
+      
+  selectedproduits: any;
+  element:any;
+  elements: any[] = []
+  this.produits = [];
+      
   }
 
   ngOnInit(){
+   
     this.produits = this.produitService.getProduits();
-}
 
+    this.getProduit.authenticate()
+        .subscribe(
+
+          (response) => {
+            // Gérer la réponse du backend (authentification réussie)
+            const objetEnJSON = JSON.stringify(response);
+            const values = Object.values(response);
+
+            for (const element of values) {
+              // `element` contient un élément de la liste
+              console.log('Élément:', element);
+              this.element=element;
+              this.elements.push(this.element);
+              // Vous pouvez maintenant faire ce que vous voulez avec chaque élément
+            }
+
+            console.log(this.element)
+       
+          },
+          (error) => {
+            console.log('erreur ');
+            // Gérer les erreurs (échec de l'authentification)
+        
+          }
+        );
+
+        
+    }
+   
 openDialog(): void {
   const dialogRef = this.dialog.open(DialogAjouterProduitComponent, {
     width: '500px', height : '350px'
@@ -58,5 +93,6 @@ openDialog(): void {
   sedeconnecter(){
     this.router.navigate(['/']);
   }
+  
 }
 

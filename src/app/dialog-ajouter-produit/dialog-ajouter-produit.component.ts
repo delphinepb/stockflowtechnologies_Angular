@@ -61,6 +61,7 @@ export class DialogAjouterProduitComponent {
     this.AuthService.ajoutProd(this.nomDuProduit,this.quantite, this.categorie).subscribe(
       (response: any) => {
         console.log('Produit ajouté:', response);
+        location.reload()
         this.dialogRef.close(response);
       },
       (error: any) => {

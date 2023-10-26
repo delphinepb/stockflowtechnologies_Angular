@@ -13,4 +13,9 @@ export class updateProduit {
         const credentials = { id, quantite };
         return this.http.post(`${this.baseUrl}/UpdateQuantite`, credentials);
     }
+
+    delete(id:any){
+        const credentials = { id };
+        return this.http.delete(`${this.baseUrl}/DeleteProduit/${id}`);
+    }
 }

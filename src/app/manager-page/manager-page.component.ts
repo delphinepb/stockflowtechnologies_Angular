@@ -119,11 +119,28 @@ export class ManagerPageComponent implements OnInit {
     }
   }
 
-  supprimerProduit() {
-    const produitElement = this.el.nativeElement.querySelector('.produit');
+  supprimerProduit(id:any) {
+    /*const produitElement = this.el.nativeElement.querySelector('.produit');
     if (produitElement) {
       produitElement.remove();
-    }
+    }*/
+
+      this.updateProduit.delete(id)
+          .subscribe(
+              (response) => {
+                  // Gérer la réponse du backend (authentification réussie)
+                  console.log('Delete Réussi ! ');
+                  this.router.navigateByUrl(this.router.url)
+                  this.getP()
+
+              },
+              (error) => {
+
+
+                  console.error('Échec du delete');
+              }
+          );
+
   }
 
   sedeconnecter(){

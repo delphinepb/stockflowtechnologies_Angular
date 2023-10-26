@@ -3,16 +3,16 @@
     <li><a >Name : </a></li>
     <li style="float: right;" (click)="sedeconnecter()"><a><i class="fa-solid fa-right-from-bracket" style="font-size: 25px; "></i></a></li>
 </ul>
-<button class="btnValider" (click)="newProduct()">Ajouter produit</button>
+<button class="btnValider" (click)="openDialog()">Ajouter produit</button>
 <div class="conteneurProduits">
-        <div *ngFor="let produit of produits" class="produit"> <div style="margin-right: 10px; ">{{produit.ref}}</div>
-            <i class="fa-solid fa-minus" (click)="enleverProduit()"></i>            
+        <div *ngFor="let produit of elements" class="produit"> <div style="margin-right: 10px; ">{{produit.nom}}</div>
+            <i class="fa-solid fa-minus" (click)="update('moins',produit.id,produit.quantite-1)"></i>
             <div>{{produit.quantite}}</div>
-            <i class="fa-solid fa-plus" (click)="ajouterProduit()"></i>
-            <i class="fa-solid fa-trash" (click)="supprimerProduit()" style="color: #ff0000;"></i>
+            <i class="fa-solid fa-plus" (click)="update('plus',produit.id,produit.quantite+1)"></i>
+            <i class="fa-solid fa-trash" (click)="supprimerProduit(produit.id)" style="color: #ff0000;"></i>
         </div>
 
-     <button class="btnValider">Valider</button>
+
 </div>
 <router-outlet></router-outlet>
 

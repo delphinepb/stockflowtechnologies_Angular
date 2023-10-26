@@ -1,0 +1,65 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1F4B8B;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 30px 140px;
+    text-decoration: none;
+  }
+    li a:hover {
+    background-color: #111;
+  }
+
+  svg {
+    font-size:20px;
+    margin-right: 10px;
+    
+  }
+  
+  .produit {
+    font-size: 20px;
+    width: 330px;
+    padding: 7px;
+    margin: 10px;
+    border: black solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .conteneurProduits {
+    display: flex;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: lightgray;
+    flex-wrap: wrap;
+  }
+
+  .btnValider {
+    border: none;
+    border-radius: 5px;
+    background-color: #00B347;
+    color: white;
+    font-size: 20px;
+    width: 175px;
+    height: 50px;
+  }
+
+  .btnValider:hover {
+    border: none;
+    border-radius: 5px;
+    color: #00B347;
+    background-color: rgb(157, 244, 174);
+    font-size: 20px;
+  }

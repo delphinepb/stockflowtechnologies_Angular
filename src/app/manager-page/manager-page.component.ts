@@ -1,5 +1,4 @@
 import { Component, ElementRef } from '@angular/core';
-import { ProduitMockService } from '../produit/produit.mock.service';
 import { produit } from '../shared/produit';
 import { Router } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
@@ -24,7 +23,6 @@ export class ManagerPageComponent {
 
   constructor(
     private el: ElementRef,
-    private produitService: ProduitMockService,
     private router: Router,
     public dialog : MatDialog,
     private getProduit : getProduits,
@@ -91,7 +89,7 @@ export class ManagerPageComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAjouterProduitComponent, {
-      width: '500px', height : '350px'
+      width: '500px', height : '350px',
     });
 
     dialogRef.afterClosed().subscribe(result => {

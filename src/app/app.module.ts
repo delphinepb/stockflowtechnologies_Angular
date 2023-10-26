@@ -39,7 +39,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatFormFieldModule
 
   ],
-  providers: [ProduitMockService],
+  providers: [ProduitMockService,ManagerPageComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

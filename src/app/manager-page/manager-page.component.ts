@@ -14,7 +14,7 @@ import {updateProduit} from "../updateProduit";
 })
 export class ManagerPageComponent implements OnInit {
   compteur: number = 0;
-  produits: produit[];  
+  produits: produit[];
   selectedproduits: any;
   element:any;
   elements: any[] = []

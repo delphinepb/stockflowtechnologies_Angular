@@ -20,7 +20,7 @@ export class ManagerPageComponent {
   elements: any[] = []
   categories: any[] = []
   categorie: number = 1
-
+  filteredElements: produit[] = [];
 
   constructor(
     private el: ElementRef,
@@ -34,6 +34,11 @@ export class ManagerPageComponent {
     this.getCategories();
     this.getP();
   }
+
+  filtrerParCategorie() {
+    this.filteredElements = this.elements.filter(produit => produit.categorie == this.categorie)
+  }  
+
 
   getCategories(){
     this.categories = [];
@@ -61,7 +66,6 @@ export class ManagerPageComponent {
   getP(){
       this.elements = [];
 
-      this.produits = this.produitService.getProduits();
 
       this.getProduit.authenticate()
           .subscribe(
@@ -71,13 +75,9 @@ export class ManagerPageComponent {
                   const values = Object.values(response);
 
                   for (const element of values) {
-                      console.log('Élément:', element);
                       this.element=element;
                       this.elements.push(this.element);
                   }
-
-                  console.log(this.element)
-
               },
               (error) => {
                   console.log('erreur ');

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../authentification';
-import {ManagerPageComponent} from '../manager-page/manager-page.component'
+import {getProduits} from '../GetProduits';
+
 
 @Component({
   selector: 'app-dialog-ajouter-produit',
@@ -12,8 +13,42 @@ export class DialogAjouterProduitComponent {
   nomDuProduit: string = '';
   quantite: number = 1;
   categorie: number = 1
+  selectedproduits: any;
+  categories: any[] = []
 
-  constructor(public dialogRef: MatDialogRef<DialogAjouterProduitComponent>, private AuthService: AuthService,private router : Router,private ManagerPageComponent:ManagerPageComponent) {}
+  constructor(public dialogRef: MatDialogRef<DialogAjouterProduitComponent>, private AuthService: AuthService,private getProduit : getProduits) {
+    this.getCategories();
+
+  }
+
+  getCategories(){
+    this.categories = [];
+
+      this.getProduit.categorie()
+          .subscribe(
+
+              (response) => {
+                  const objetEnJSON = JSON.stringify(response);
+                  const values = Object.values(response);
+
+                  for (const element of values) {
+                      // `element` contient un élément de la liste
+                      console.log('Élément:', element);
+                      this.categorie=element;
+                      this.categories.push(this.categorie);
+                      // Vous pouvez maintenant faire ce que vous voulez avec chaque élément
+                  }
+
+                  console.log(this.categorie)
+
+              },
+              (error) => {
+                  console.log('erreur ');
+                  // Gérer les erreurs (échec de l'authentification)
+
+              }
+          );
+  }
 
   ajouterProduit() {
     const produit = {
@@ -26,8 +61,6 @@ export class DialogAjouterProduitComponent {
     this.AuthService.ajoutProd(this.nomDuProduit,this.quantite, this.categorie).subscribe(
       (response: any) => {
         console.log('Produit ajouté:', response);
-        this.ManagerPageComponent.getP()
-        location.reload();
         this.dialogRef.close(response);
       },
       (error: any) => {

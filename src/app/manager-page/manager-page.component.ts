@@ -2,7 +2,6 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { ProduitMockService } from '../produit/produit.mock.service';
 import { produit } from '../shared/produit';
 import { Router } from '@angular/router';
-import {updateProduit} from "../updateProduit";
 
 @Component({
   selector: 'app-manager-page',
@@ -13,7 +12,7 @@ export class ManagerPageComponent implements OnInit {
   compteur: number = 0;
   produits: produit[];
 
-  constructor(private el: ElementRef, private produitService: ProduitMockService, private router: Router,private updateProduit:updateProduit) {
+  constructor(private el: ElementRef, private produitService: ProduitMockService, private router: Router) {
     this.produits = [];
   }
 
@@ -21,7 +20,14 @@ export class ManagerPageComponent implements OnInit {
     this.produits = this.produitService.getProduits();
 }
 
-  enleverProduit(id: any,quantite:any){
+  enleverProduit(){
+    if (this.compteur > 0) {
+      this.compteur--;
+    }
+  }
+
+  ajouterProduit(){
+
     console.log("dans enlever produit "+id)
 
     this.updateProduit.authenticate(id,quantite)
@@ -39,12 +45,7 @@ export class ManagerPageComponent implements OnInit {
           console.error('Échec de l\'update');
         }
       );
-    if (this.compteur > 0) {
-      this.compteur--;
-    }
-  }
 
-  ajouterProduit(){
     this.compteur++;
   }
 

@@ -1,27 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProduitComponent } from './produit/produit.component';
-import { ProduitMockService } from './produit/produit.mock.service';
-import { FormsModule } from '@angular/forms';
-
-import { ManagerPageComponent } from './manager-page/manager-page.component';
-import { LoginComponent } from './login/login.component';
-import { ModalComponent } from './modal/modal.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import {FormsModule} from "@angular/forms";
+import {LoginComponent} from "./login/login.component";
+import {ManagerPageComponent} from "./manager-page/manager-page.component";
+import {ProduitMockService} from "./produit/produit.mock.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProduitComponent,
-    ManagerPageComponent,
     LoginComponent,
-    ModalComponent
+    ManagerPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [ProduitMockService],

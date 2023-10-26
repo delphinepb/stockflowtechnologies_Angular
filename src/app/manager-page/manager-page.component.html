@@ -5,9 +5,9 @@
 </ul>
 <button class="btnValider" (click)="newProduct()">Ajouter produit</button>
 <div class="conteneurProduits">
-        <div *ngFor="let produit of produits" class="produit"> <div style="margin-right: 10px; ">{{produit.ref}}</div>
+        <div *ngFor="let produit of elements" class="produit"> <div style="margin-right: 10px; ">{{produit.nom}}</div>
             <i class="fa-solid fa-minus" (click)="enleverProduit()"></i>            
-            <div>{{produit.quantite}}</div>
+            <div>{{produit.quantite}}</div>        
             <i class="fa-solid fa-plus" (click)="ajouterProduit()"></i>
             <i class="fa-solid fa-trash" (click)="supprimerProduit()" style="color: #ff0000;"></i>
         </div>

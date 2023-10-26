@@ -97,75 +97,11 @@
             ],
             "scripts": []
           }
-        },
-        "cypress-run": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "devServerTarget": "stockflowtechnologies:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "stockflowtechnologies:serve:production"
-            }
-          }
-        },
-        "cypress-open": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "watch": true,
-            "headless": false
-          }
-        },
-        "ct": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "devServerTarget": "stockflowtechnologies:serve",
-            "watch": true,
-            "headless": false,
-            "testingType": "component"
-          },
-          "configurations": {
-            "development": {
-              "devServerTarget": "stockflowtechnologies:serve:development"
-            }
-          }
-        },
-        "nightwatch-run": {
-          "builder": "@nightwatch/schematics:nightwatch",
-          "options": {
-            "devServerTarget": "stockflowtechnologies:serve",
-            "tsConfig": "../nightwatch/tsconfig.e2e.json",
-            "config": "./nightwatch.conf.js",
-            "env": "chrome"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "stockflowtechnologies:serve:production"
-            }
-          }
-        },
-        "e2e": {
-          "builder": "@nightwatch/schematics:nightwatch",
-          "options": {
-            "devServerTarget": "stockflowtechnologies:serve",
-            "tsConfig": "../nightwatch/tsconfig.e2e.json",
-            "config": "./nightwatch.conf.js",
-            "env": "chrome"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "stockflowtechnologies:serve:production"
-            }
-          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "aa13d2f4-478a-49b0-80dd-5fc357452b81",
-    "schematicCollections": [
-      "@cypress/schematic",
-      "@schematics/angular"
-    ]
+    "analytics": "fd5cd46c-50d4-42b3-96ab-41d50dd53ac1"
   }
 }

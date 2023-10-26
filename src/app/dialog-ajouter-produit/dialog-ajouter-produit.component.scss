@@ -1,0 +1,28 @@
+
+label {
+    color: black;
+}
+select {
+    height: 20px;
+}
+input {
+    height: 20px;
+}
+
+.btnValider {
+    border: none;
+    border-radius: 5px;
+    background-color: #00B347;
+    color: white;
+    font-size: 20px;
+    width: 155px;
+    height: 40px;
+  }
+
+  .btnValider:hover {
+    border: none;
+    border-radius: 5px;
+    color: #00B347;
+    background-color: rgb(157, 244, 174);
+    font-size: 20px;
+  }

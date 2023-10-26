@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../authentification';
 import {NgForm} from "@angular/forms";
+import {ManagerPageComponent} from "../manager-page/manager-page.component";
+import {SharedService} from "../shared.service";
+
 
 @Component({
   selector: 'app-login',
@@ -13,7 +16,7 @@ export class LoginComponent  {
   email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService,private router:Router) { }
+  constructor(private authService: AuthService,private router:Router,private ManagerPageComponent:ManagerPageComponent,private sharedService: SharedService) { }
 
 
 
@@ -27,7 +30,6 @@ export class LoginComponent  {
         password: this.password
       }
 
-      console.log('a '+this.email +" password "+this.password);
 
       this.authService.authenticate(this.email, this.password)
         .subscribe(
@@ -37,6 +39,9 @@ export class LoginComponent  {
             console.log('Authentification réussie');
 
             this.router.navigate(['/manager'])
+            this.sharedService.email = this.email
+
+
           },
           (error) => {
             // Gérer les erreurs (échec de l'authentification)
@@ -44,7 +49,6 @@ export class LoginComponent  {
           }
         );
     }
-    console.log("email " + this.email + " password " + this.password);
 
   }
 }

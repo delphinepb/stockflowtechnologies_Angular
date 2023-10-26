@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../authentification';
 import {getProduits} from '../GetProduits';
+import{ManagerPageComponent} from '../manager-page/manager-page.component'
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -16,7 +18,7 @@ export class DialogAjouterProduitComponent {
   selectedproduits: any;
   categories: any[] = []
 
-  constructor(public dialogRef: MatDialogRef<DialogAjouterProduitComponent>, private AuthService: AuthService,private getProduit : getProduits) {
+  constructor(private router: Router,public dialogRef: MatDialogRef<DialogAjouterProduitComponent>, private AuthService: AuthService,private getProduit : getProduits,private ManagerPageComponent:ManagerPageComponent) {
     this.getCategories();
 
   }
@@ -32,11 +34,11 @@ export class DialogAjouterProduitComponent {
                   const values = Object.values(response);
 
                   for (const element of values) {
-                      // `element` contient un élément de la liste
+
                       console.log('Élément:', element);
                       this.categorie=element;
                       this.categories.push(this.categorie);
-                      // Vous pouvez maintenant faire ce que vous voulez avec chaque élément
+
                   }
 
                   console.log(this.categorie)
@@ -44,7 +46,6 @@ export class DialogAjouterProduitComponent {
               },
               (error) => {
                   console.log('erreur ');
-                  // Gérer les erreurs (échec de l'authentification)
 
               }
           );
@@ -61,7 +62,10 @@ export class DialogAjouterProduitComponent {
     this.AuthService.ajoutProd(this.nomDuProduit,this.quantite, this.categorie).subscribe(
       (response: any) => {
         console.log('Produit ajouté:', response);
-        this.dialogRef.close(response);
+        this.dialogRef.close();
+        this.router.navigateByUrl(this.router.url)
+        this.ManagerPageComponent.getP()
+        location.reload()
       },
       (error: any) => {
         console.error('Erreur lors de l\'ajout du produit:', error);

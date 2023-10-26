@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { DialogAjouterProduitComponent } from '../dialog-ajouter-produit/dialog-ajouter-produit.component';
 import {getProduits} from '../GetProduits';
 import {updateProduit} from "../updateProduit";
+import {SharedService} from "../shared.service";
 
 @Component({
   selector: 'app-manager-page',
@@ -20,6 +21,7 @@ export class ManagerPageComponent {
   elements: any[] = []
   categories: any[] = []
   categorie: number = 1
+  email: any;
 
 
   constructor(
@@ -29,10 +31,12 @@ export class ManagerPageComponent {
     public dialog : MatDialog,
     private getProduit : getProduits,
     private updateProduit:updateProduit,
+    private sharedService: SharedService
   ) {
     this.produits=[]
     this.getCategories();
     this.getP();
+    this.email=this.sharedService.email;
   }
 
   getCategories(){
@@ -87,7 +91,7 @@ export class ManagerPageComponent {
 
   }
 
-  
+
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAjouterProduitComponent, {
@@ -123,6 +127,7 @@ export class ManagerPageComponent {
                     this.router.navigateByUrl(this.router.url)
                     this.getP()
 
+
                 },
                 (error) => {
 
@@ -157,5 +162,6 @@ export class ManagerPageComponent {
   sedeconnecter(){
     this.router.navigate(['/']);
   }
+
 
 }

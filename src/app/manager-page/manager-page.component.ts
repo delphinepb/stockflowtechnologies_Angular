@@ -14,6 +14,9 @@ import {getProduits} from '../GetProduits';
 export class ManagerPageComponent implements OnInit {
   compteur: number = 0;
   produits: produit[];  
+  selectedproduits: any;
+  element:any;
+  elements: any[] = []
 
   constructor(
     private el: ElementRef, 
@@ -23,9 +26,7 @@ export class ManagerPageComponent implements OnInit {
      private getProduit : getProduits
     ) { 
       
-  selectedproduits: any;
-  element:any;
-  elements: any[] = []
+
   this.produits = [];
       
   }

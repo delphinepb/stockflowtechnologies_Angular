@@ -13,4 +13,9 @@ export class AuthService {
     const credentials = { email, password };
     return this.http.post(`${this.baseUrl}/userLogin`, credentials);
   }
+
+  ajoutProd(nom: string, quantite: number, categorie: number) {
+    const credentials = { nom, quantite, categorie };
+    return this.http.post(`${this.baseUrl}/CreatedProduit`, credentials);
+  }
 }

@@ -1,13 +1,13 @@
 <h1 mat-dialog-title style="text-align: center; font-weight: bold; font-size:25px">Ajouter un produit</h1>
 
+
 <div mat-dialog-content>
     <label for="nom">Nom du produit</label>
-    <input type="text"><br>
+    <input type="text" [(ngModel)]="nomDuProduit"><br>
     <label for="qtt">Quantité</label>
-    <input type="number"><br>
+    <input type="number" [(ngModel)]="quantite"><br>
     <label>Catégorie</label>
-    <select name="" id=""></select>
-</div>
-
-<button class="btnValider">Ajouter</button>
-
+    <input type="number" [(ngModel)]="categorie"><br>
+  </div>
+  
+  <button class="btnValider" (click)="ajouterProduit()">Ajouter</button>

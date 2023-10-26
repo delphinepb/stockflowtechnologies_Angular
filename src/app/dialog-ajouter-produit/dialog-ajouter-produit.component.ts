@@ -29,7 +29,6 @@ export class DialogAjouterProduitComponent {
         console.log('Produit ajouté:', response);
         this.ManagerPageComponent.getP()
         location.reload();
-        //this.router.navigateByUrl(this.router.url)
 
         this.dialogRef.close(response);
       },

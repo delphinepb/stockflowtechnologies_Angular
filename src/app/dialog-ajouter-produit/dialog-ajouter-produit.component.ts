@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../authentification';
+import {getProduits} from '../GetProduits';
+
 
 @Component({
   selector: 'app-dialog-ajouter-produit',
@@ -11,8 +13,42 @@ export class DialogAjouterProduitComponent {
   nomDuProduit: string = '';
   quantite: number = 1;
   categorie: number = 1
+  selectedproduits: any;
+  categories: any[] = []
 
-  constructor(public dialogRef: MatDialogRef<DialogAjouterProduitComponent>, private AuthService: AuthService) {}
+  constructor(public dialogRef: MatDialogRef<DialogAjouterProduitComponent>, private AuthService: AuthService,private getProduit : getProduits) {
+    this.getCategories();
+
+  }
+
+  getCategories(){
+    this.categories = [];
+
+      this.getProduit.categorie()
+          .subscribe(
+
+              (response) => {
+                  const objetEnJSON = JSON.stringify(response);
+                  const values = Object.values(response);
+
+                  for (const element of values) {
+                      // `element` contient un élément de la liste
+                      console.log('Élément:', element);
+                      this.categorie=element;
+                      this.categories.push(this.categorie);
+                      // Vous pouvez maintenant faire ce que vous voulez avec chaque élément
+                  }
+
+                  console.log(this.categorie)
+
+              },
+              (error) => {
+                  console.log('erreur ');
+                  // Gérer les erreurs (échec de l'authentification)
+
+              }
+          );
+  }
 
   ajouterProduit() {
     const produit = {

@@ -3,7 +3,21 @@
     <li><a >Name : </a></li>
     <li style="float: right;" (click)="sedeconnecter()"><a><i class="fa-solid fa-right-from-bracket" style="font-size: 25px; "></i></a></li>
 </ul>
-<button class="btnValider" (click)="openDialog()">Ajouter produit</button>
+<div style="display: flex;">
+    <button class="btnValider" (click)="openDialog()">Ajouter produit</button> 
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Options</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="categorie">
+            <option *ngFor="let categorie of categories" [value]="categorie.id">{{categorie.nom}}</option>
+        </select>
+      </div>
+
+
+</div>
+
 <div class="conteneurProduits">
         <div *ngFor="let produit of elements" class="produit"> <div style="margin-right: 10px; ">{{produit.nom}}</div>
             <i class="fa-solid fa-minus" (click)="update('moins',produit.id,produit.quantite-1)"></i>

@@ -3,11 +3,18 @@
 
 <div mat-dialog-content>
     <label for="nom">Nom du produit</label>
-    <input type="text" [(ngModel)]="nomDuProduit"><br>
+    <input type="text" class="form-control" [(ngModel)]="nomDuProduit"><br>
     <label for="qtt">Quantité</label>
-    <input type="number" [(ngModel)]="quantite"><br>
-    <label>Catégorie</label>
-    <input type="number" [(ngModel)]="categorie"><br>
+    <input type="number" class="form-control" [(ngModel)]="quantite"><br>
+      <div class="input-group">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="text">Catégorie</button>
+        </div>
+        <select class="custom-select" id="inputGroupSelect04" [(ngModel)]="categorie">
+          <option *ngFor="let categorie of categories" [value]="categorie.id">{{categorie.nom}}</option>
+        </select>
+        
+      </div>
   </div>
   
   <button class="btnValider" (click)="ajouterProduit()">Ajouter</button>

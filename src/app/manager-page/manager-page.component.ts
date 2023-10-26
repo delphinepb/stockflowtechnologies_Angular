@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { ProduitMockService } from '../produit/produit.mock.service';
 import { produit } from '../shared/produit';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manager-page',
@@ -11,7 +12,7 @@ export class ManagerPageComponent implements OnInit {
   compteur: number = 0;
   produits: produit[];
 
-  constructor(private el: ElementRef, private produitService: ProduitMockService) { 
+  constructor(private el: ElementRef, private produitService: ProduitMockService, private router: Router) { 
     this.produits = [];
   }
 
@@ -37,5 +38,9 @@ export class ManagerPageComponent implements OnInit {
     if (produitElement) {
       produitElement.remove();
     }
+  }
+
+  sedeconnecter(){
+    this.router.navigate(['/']);
   }
 }

@@ -1,0 +1,35 @@
+<ul>
+    <li><a><i class="fa-solid fa-user" style="font-size: 25px; margin-right: 12px;"></i>Role :  </a></li>
+    <li><a >Name : </a></li>
+    <li style="float: right;" (click)="sedeconnecter()"><a><i class="fa-solid fa-right-from-bracket" style="font-size: 25px; "></i></a></li>
+</ul>
+<div style="display: flex;">
+    <button class="btnValider" (click)="openDialog()">Ajouter produit</button> 
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Options</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="categorie" (change)="filtrerParCategorie()">
+            <option value="tous" selected>Tous</option>
+            <option *ngFor="let categorie of categories" [value]="categorie.id">{{categorie.nom}}</option>
+          </select>
+      </div>
+
+
+</div>
+
+<div class="conteneurProduits">
+    <ng-container *ngFor="let produit of elements">
+      <div class="produit" *ngIf="filteredElements.length === 0 || filteredElements.indexOf(produit) !== -1">
+        <div style="margin-right: 10px;">{{produit.nom}}</div>
+        <i class="fa-solid fa-minus" (click)="update('moins', produit.id, produit.quantite - 1)"></i>
+        <div>{{produit.quantite}}</div>
+        <i class="fa-solid fa-plus" style="color: lightgrey;"></i>
+        <i class="fa-solid fa-trash" style="color: #f28484;"></i>
+      </div>
+    </ng-container>
+  </div>
+  
+<router-outlet></router-outlet>
+

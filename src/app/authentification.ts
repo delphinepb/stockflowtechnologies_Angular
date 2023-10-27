@@ -14,6 +14,11 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/userLogin`, credentials);
   }
 
+  VerifyRole(email : string){
+    const credentials = { email};
+    return this.http.get(`${this.baseUrl}/GetUserByEmail/${email}`);
+  }
+
   ajoutProd(nom: string, quantite: number, categorie: number) {
     const credentials = { nom, quantite, categorie };
     return this.http.post(`${this.baseUrl}/CreatedProduit`, credentials);

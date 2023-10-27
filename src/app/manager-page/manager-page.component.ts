@@ -36,7 +36,10 @@ export class ManagerPageComponent {
     this.produits=[]
     this.getCategories();
     this.getP();
-    this.email=this.sharedService.email;
+
+
+
+
   }
 
   getCategories(){
@@ -63,6 +66,7 @@ export class ManagerPageComponent {
   }
 
   getP(){
+
       this.elements = [];
 
       this.produits = this.produitService.getProduits();
@@ -75,12 +79,9 @@ export class ManagerPageComponent {
                   const values = Object.values(response);
 
                   for (const element of values) {
-                      console.log('Élément:', element);
                       this.element=element;
                       this.elements.push(this.element);
                   }
-
-                  console.log(this.element)
 
               },
               (error) => {
@@ -101,7 +102,7 @@ export class ManagerPageComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.router.navigateByUrl(this.router.url)
-
+      this.email = localStorage.getItem('userLogin');
 
     });
   }
@@ -138,7 +139,6 @@ export class ManagerPageComponent {
 
     }
   }
-
   supprimerProduit(id:any) {
 
 

@@ -4,6 +4,7 @@ import { ManagerPageComponent } from './manager-page/manager-page.component';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
+
 const routes: Routes = [
   { path:'' , component : LoginComponent},
   { path: 'manager', component: ManagerPageComponent },

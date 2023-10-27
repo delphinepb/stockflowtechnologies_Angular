@@ -15,6 +15,8 @@ export class LoginComponent  {
 
   email: string = '';
   password: string = '';
+  element:any;
+  elements: any[] = []
 
   constructor(private authService: AuthService,private router:Router,private ManagerPageComponent:ManagerPageComponent,private sharedService: SharedService) { }
 
@@ -22,7 +24,7 @@ export class LoginComponent  {
 
   login(form: NgForm) {
 
-    console.log("dans login");
+
 
     if (form.valid) {
       const credentials = {
@@ -35,11 +37,29 @@ export class LoginComponent  {
         .subscribe(
 
           (response) => {
-            // Gérer la réponse du backend (authentification réussie)
             console.log('Authentification réussie');
+            this.authService.VerifyRole(this.email)
+              .subscribe(
 
-            this.router.navigate(['/manager'])
-            this.sharedService.email = this.email
+                (response) => {
+                  const objetEnJSON = JSON.stringify(response);
+                  const values = Object.values(response);
+
+                  for (const element of values) {
+                    this.element=element;
+                    this.elements.push(this.element);
+                  }
+                  if(this.elements[3]=='1'){
+                    this.router.navigate(['/manager'])
+                  }else if(this.elements[3]=='2'){
+                    //this.router.navigate(['/caissier'])
+                  }
+
+                },
+                (error) => {
+                  console.error('erreur recup role');
+                }
+              );
 
 
           },

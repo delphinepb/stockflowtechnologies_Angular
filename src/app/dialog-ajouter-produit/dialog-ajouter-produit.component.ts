@@ -35,7 +35,7 @@ export class DialogAjouterProduitComponent {
 
                   for (const element of values) {
 
-                      console.log('Élément:', element);
+
                       this.categorie=element;
                       this.categories.push(this.categorie);
 
@@ -61,7 +61,6 @@ export class DialogAjouterProduitComponent {
 
     this.AuthService.ajoutProd(this.nomDuProduit,this.quantite, this.categorie).subscribe(
       (response: any) => {
-        console.log('Produit ajouté:', response);
         this.dialogRef.close();
         this.router.navigateByUrl(this.router.url)
         this.ManagerPageComponent.getP()

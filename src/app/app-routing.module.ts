@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CaissierPageComponent } from './caissier-page/caissier-page.component';
 
+
 const routes: Routes = [
   { path:'' , component : LoginComponent},
   { path: 'manager', component: ManagerPageComponent },

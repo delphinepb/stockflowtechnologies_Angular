@@ -1,12 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../authentification';
 import {getProduits} from '../GetProduits';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {Router} from "@angular/router";
 
-export interface DialogData {
-
-}
 
 @Component({
   selector: 'app-dialog-ajouter-produit',
@@ -20,7 +17,7 @@ export class DialogAjouterProduitComponent {
   selectedproduits: any;
   categories: any[] = []
 
-  constructor(public dialogRef: MatDialogRef<DialogAjouterProduitComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData, private AuthService: AuthService,private getProduit : getProduits) {
+  constructor(private router: Router,public dialogRef: MatDialogRef<DialogAjouterProduitComponent>, private AuthService: AuthService,private getProduit : getProduits,private ManagerPageComponent:ManagerPageComponent) {
     this.getCategories();
 
   }
@@ -66,6 +63,7 @@ export class DialogAjouterProduitComponent {
       (response: any) => {
         console.log('Produit ajouté:', response);
         location.reload()
+        this.ManagerPageComponent.getP()
         this.dialogRef.close(response);
       },
       (error: any) => {

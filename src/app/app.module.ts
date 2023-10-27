@@ -16,15 +16,13 @@ import { NgIf } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { CaissierPageComponent } from './caissier-page/caissier-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ManagerPageComponent,
-    DialogAjouterProduitComponent,
-    CaissierPageComponent
+    DialogAjouterProduitComponent
   ],
   imports: [
     BrowserModule,

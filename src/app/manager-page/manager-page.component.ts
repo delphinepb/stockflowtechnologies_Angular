@@ -1,4 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
+import { ProduitMockService } from '../produit/produit.mock.service';
 import { produit } from '../shared/produit';
 import { Router } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
@@ -13,16 +14,17 @@ import {updateProduit} from "../updateProduit";
 })
 export class ManagerPageComponent {
   compteur: number = 0;
-  produits: produit[];  
+  produits: produit[];
   selectedproduits: any;
   element:any;
   elements: any[] = []
   categories: any[] = []
   categorie: number = 1
-  filteredElements: produit[] = [];
+
 
   constructor(
     private el: ElementRef,
+    private produitService: ProduitMockService,
     private router: Router,
     public dialog : MatDialog,
     private getProduit : getProduits,
@@ -32,11 +34,6 @@ export class ManagerPageComponent {
     this.getCategories();
     this.getP();
   }
-
-  filtrerParCategorie() {
-    this.filteredElements = this.elements.filter(produit => produit.categorie == this.categorie)
-  }  
-
 
   getCategories(){
     this.categories = [];
@@ -64,6 +61,7 @@ export class ManagerPageComponent {
   getP(){
       this.elements = [];
 
+      this.produits = this.produitService.getProduits();
 
       this.getProduit.authenticate()
           .subscribe(
@@ -73,9 +71,13 @@ export class ManagerPageComponent {
                   const values = Object.values(response);
 
                   for (const element of values) {
+                      console.log('Élément:', element);
                       this.element=element;
                       this.elements.push(this.element);
                   }
+
+                  console.log(this.element)
+
               },
               (error) => {
                   console.log('erreur ');
@@ -85,11 +87,11 @@ export class ManagerPageComponent {
 
   }
 
-  
+
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAjouterProduitComponent, {
-      width: '500px', height : '350px',
+      width: '500px', height : '350px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

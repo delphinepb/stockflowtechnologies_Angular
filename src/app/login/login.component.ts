@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../authentification';
 import {NgForm} from "@angular/forms";
 import {ManagerPageComponent} from "../manager-page/manager-page.component";
-import {SharedService} from "../shared.service";
 
 
 @Component({
@@ -18,7 +17,7 @@ export class LoginComponent  {
   element:any;
   elements: any[] = []
 
-  constructor(private authService: AuthService,private router:Router,private ManagerPageComponent:ManagerPageComponent,private sharedService: SharedService) { }
+  constructor(private authService: AuthService,private router:Router,private ManagerPageComponent:ManagerPageComponent) { }
 
 
 

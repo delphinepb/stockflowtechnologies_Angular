@@ -15,7 +15,7 @@ import {updateProduit} from "../updateProduit";
 export class CaissierPageComponent {
 
   compteur: number = 0;
-  produits: produit[];  
+  produits: produit[];
   selectedproduits: any;
   element:any;
   elements: any[] = []
@@ -37,7 +37,7 @@ export class CaissierPageComponent {
 
   filtrerParCategorie() {
     this.filteredElements = this.elements.filter(produit => produit.categorie == this.categorie)
-  } 
+  }
 
   getCategories(){
     this.categories = [];
@@ -86,7 +86,7 @@ export class CaissierPageComponent {
 
   }
 
-  
+
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAjouterProduitComponent, {

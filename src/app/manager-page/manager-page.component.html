@@ -25,8 +25,8 @@
         <div style="margin-right: 10px;">{{produit.nom}}</div>
         <i class="fa-solid fa-minus" (click)="update('moins', produit.id, produit.quantite - 1)"></i>
         <div>{{produit.quantite}}</div>
-        <i class="fa-solid fa-plus" style="color: lightgrey;"></i>
-        <i class="fa-solid fa-trash" style="color: #f28484;"></i>
+        <i class="fa-solid fa-plus"(click)="update('plus', produit.id, produit.quantite +1)"></i>
+        <i class="fa-solid fa-trash" style="color: red" (click)="supprimerProduit(produit.id)"> </i>
       </div>
     </ng-container>
   </div>

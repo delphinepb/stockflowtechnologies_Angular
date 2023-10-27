@@ -3,14 +3,14 @@
     <li><a >Name : </a></li>
     <li style="float: right;" (click)="sedeconnecter()"><a><i class="fa-solid fa-right-from-bracket" style="font-size: 25px; "></i></a></li>
 </ul>
-<div style="display: flex;">
+<div style="display: flex; margin-top: 5px;">
     <button class="btnValider" (click)="openDialog()">Ajouter produit</button> 
 
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
+    <div class="input-group mb-3 filtre" >
+        <div class="input-group-prepend" style="margin-top: 5px;">
           <label class="input-group-text" for="inputGroupSelect01">Options</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="categorie" (change)="filtrerParCategorie()">
+        <select class="custom-select inputfiltre" id="inputGroupSelect01" [(ngModel)]="categorie" (change)="filtrerParCategorie()">
             <option value="tous" selected>Tous</option>
             <option *ngFor="let categorie of categories" [value]="categorie.id">{{categorie.nom}}</option>
           </select>

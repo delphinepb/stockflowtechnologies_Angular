@@ -41,7 +41,7 @@ ul {
 
   .conteneurProduits {
     display: flex;
-    margin: 10px;
+    margin: 0px 10px;
     border-radius: 5px;
     background-color: lightgray;
     flex-wrap: wrap;
@@ -64,4 +64,20 @@ ul {
     color: #00B347;
     background-color: rgb(157, 244, 174);
     font-size: 20px;
+  }
+
+  .filtre {
+    margin-left: 10px;
+    border-radius: 9px;
+    padding-left: 17px;
+    border: black 1px solid;
+    height: 51px;
+    width: 274px;
+    background-color: lightgrey;
+  }
+
+  .inputfiltre{
+    height: 40px;
+    border-radius: 10px;
+    margin-top: 5px;
   }

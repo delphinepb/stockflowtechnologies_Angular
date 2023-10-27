@@ -52,7 +52,7 @@ export class LoginComponent  {
                   if(this.elements[3]=='1'){
                     this.router.navigate(['/manager'])
                   }else if(this.elements[3]=='2'){
-                    //this.router.navigate(['/caissier'])
+                    this.router.navigate(['/caissier'])
                   }
 
                 },

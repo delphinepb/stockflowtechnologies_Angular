@@ -71,7 +71,6 @@ export class ManagerPageComponent {
                   const values = Object.values(response);
 
                   for (const element of values) {
-                      console.log('Élément:', element);
                       this.element=element;
                       this.elements.push(this.element);
                   }

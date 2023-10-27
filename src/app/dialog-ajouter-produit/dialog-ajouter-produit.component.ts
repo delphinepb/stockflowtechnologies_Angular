@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../authentification';
 import {getProduits} from '../GetProduits';
 import {Router} from "@angular/router";
+import {ManagerPageComponent} from "../manager-page/manager-page.component";
 
 
 @Component({
@@ -33,14 +34,10 @@ export class DialogAjouterProduitComponent {
                   const values = Object.values(response);
 
                   for (const element of values) {
-                      // `element` contient un élément de la liste
-                      console.log('Élément:', element);
                       this.categorie=element;
                       this.categories.push(this.categorie);
-                      // Vous pouvez maintenant faire ce que vous voulez avec chaque élément
                   }
 
-                  console.log(this.categorie)
 
               },
               (error) => {
@@ -57,11 +54,9 @@ export class DialogAjouterProduitComponent {
       quantite: this.quantite,
       categorie: this.categorie
     };
-    console.log(this.nomDuProduit, this.quantite, this.categorie);
 
     this.AuthService.ajoutProd(this.nomDuProduit,this.quantite, this.categorie).subscribe(
       (response: any) => {
-        console.log('Produit ajouté:', response);
         location.reload()
         this.ManagerPageComponent.getP()
         this.dialogRef.close(response);

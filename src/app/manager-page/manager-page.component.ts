@@ -20,6 +20,7 @@ export class ManagerPageComponent {
   elements: any[] = []
   categories: any[] = []
   categorie: number = 1
+  filteredElements: produit[] = [];
 
 
   constructor(
@@ -34,6 +35,10 @@ export class ManagerPageComponent {
     this.getCategories();
     this.getP();
   }
+
+  filtrerParCategorie() {
+    this.filteredElements = this.elements.filter(produit => produit.categorie == this.categorie)
+  } 
 
   getCategories(){
     this.categories = [];

@@ -50,20 +50,12 @@ ul {
   .btnValider {
     border: none;
     border-radius: 5px;
-    background-color: #00B347;
+    background-color: rgb(157, 244, 174);
     color: white;
     font-size: 20px;
     width: 190px;
     height: 50px;
     margin-left: 230px;
-  }
-
-  .btnValider:hover {
-    border: none;
-    border-radius: 5px;
-    color: #00B347;
-    background-color: rgb(157, 244, 174);
-    font-size: 20px;
   }
 
   .filtre {
@@ -81,3 +73,4 @@ ul {
     border-radius: 10px;
     margin-top: 5px;
   }
+
